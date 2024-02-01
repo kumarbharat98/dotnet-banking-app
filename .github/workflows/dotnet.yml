@@ -19,7 +19,7 @@ jobs:
            -  name: Setup .NET
               uses: actions/setup-dotnet@v4
               with:
-                  dotnet-version: 10.0.0
+                  dotnet-version: 4.5.2
 
            -  name: Install .NET Framework 4.5.2 Developer Pack
               run: |
@@ -43,3 +43,4 @@ jobs:
            -  name: Build
               run: dotnet build --configuration Release ApnaBank
               working-directory: ApnaBank
+
