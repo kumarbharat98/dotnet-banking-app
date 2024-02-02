@@ -2,27 +2,21 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
 name: .NET
-
 on:
   push:
     branches:
       - master
-
 jobs:
   build:
-    runs-on: windows-latest  # Use a Windows runner
-
+    runs-on: windows-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 4.5.2  # Specify the .NET Framework version
-
-    - name: Restore dependencies
-      run: nuget restore ApnaBank/ApnaBank.sln
-
-    - name: Build
-      run: msbuild /p:Configuration=Release ApnaBank/ApnaBank/ApnaBank.csproj
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 5.0.403
+      - name: Restore dependencies
+        run: nuget restore ApnaBank/ApnaBank.sln
+      - name: Build
+        run: msbuild /p:Configuration=Release ApnaBank/ApnaBank/ApnaBank.csproj
