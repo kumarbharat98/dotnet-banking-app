@@ -19,4 +19,6 @@ jobs:
       - name: Restore dependencies
         run: nuget restore ApnaBank/ApnaBank.sln
       - name: Build
-        run: '"C:\Program Files\dotnet\dotnet.exe" build --configuration Release ApnaBank/ApnaBank/ApnaBank.csproj'
+        run: >
+          "C:\Program Files\dotnet\dotnet.exe" build --configuration Release
+          ApnaBank/ApnaBank/ApnaBank.csproj
