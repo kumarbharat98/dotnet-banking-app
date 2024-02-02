@@ -36,9 +36,6 @@ jobs:
         run: dotnet restore
         working-directory: ApnaBank
 
-      - name: Update MSBuild
-        run: dotnet tool update -g msbuild
-
       - name: Build
         run: dotnet build --configuration Release
         working-directory: ApnaBank
