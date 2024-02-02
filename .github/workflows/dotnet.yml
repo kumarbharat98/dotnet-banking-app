@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Use a Windows runner
 
     steps:
     - name: Checkout code
@@ -19,15 +19,10 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 4.5.2  # Choose a version that is compatible with your project
+        dotnet-version: 4.5.2  # Specify the .NET Framework version
 
     - name: Restore dependencies
-      run: dotnet restore
-      working-directory: ApnaBank
+      run: nuget restore ApnaBank/ApnaBank.sln
 
     - name: Build
-      run: dotnet build --configuration Release
-      working-directory: ApnaBank
-
-
-
+      run: msbuild /p:Configuration=Release ApnaBank/ApnaBank/ApnaBank.csproj
