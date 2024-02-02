@@ -5,39 +5,29 @@ name: .NET
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 4.5.2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 4.5.2  # Choose a version that is compatible with your project
 
-      - name: Install .NET Framework 4.5.2 Developer Pack
-        run: |
-          sudo dpkg --add-architecture i386
-          sudo apt-get update
-          sudo apt-get install -y \
-            wine64 \
-            libwine:i386 \
-            libwine-development:i386 \
-            wine \
-            wine-stable \
-            wine64-development
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ApnaBank
 
-      - name: Restore dependencies
-        run: dotnet restore
-        working-directory: ApnaBank
+    - name: Build
+      run: dotnet build --configuration Release
+      working-directory: ApnaBank
 
-      - name: Build
-        run: dotnet build --configuration Release
-        working-directory: ApnaBank
 
 
