@@ -37,7 +37,7 @@ jobs:
         working-directory: ApnaBank
 
       - name: Update MSBuild
-        run: dotnet tool update -g msbuild --version 16.9.0
+        run: dotnet tool update -g msbuild
 
       - name: Build
         run: dotnet build --configuration Release
